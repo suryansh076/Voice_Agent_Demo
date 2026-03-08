@@ -19,7 +19,9 @@ public class authController {
             }
 
             if (authkey != null && authkey != 0) {
-                return "Key: " + authkey;
+                Integer temp= authkey;
+                authkey = null; // reset authkey after use
+                return "Key: " + temp;
             } else {
                 return "Auth key not set within 15 seconds";
             }
@@ -28,6 +30,7 @@ public class authController {
     @PostMapping("/setauthkey/{key}")
     public String setAuthKey(@PathVariable Integer key) {
         this.authkey = key;
+
         return "Auth key set to: " + authkey;
     }
 }

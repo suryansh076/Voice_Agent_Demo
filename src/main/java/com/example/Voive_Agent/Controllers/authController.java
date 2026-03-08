@@ -1,5 +1,6 @@
 package com.example.Voive_Agent.Controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ public class authController {
     private final Object lock = new Object();
 
     @GetMapping
-    public String auth() throws InterruptedException {
+    public ResponseEntity<?> auth() throws InterruptedException {
 
         synchronized (lock) {
 
@@ -21,9 +22,9 @@ public class authController {
             if (authkey != null && authkey != 0) {
                 Integer temp= authkey;
                 authkey = null; // reset authkey after use
-                return "Key: " + temp;
+                return ResponseEntity.status(200).body(temp);
             } else {
-                return "Auth key not set within 15 seconds";
+                return ResponseEntity.status(400).body(null);
             }
         }
     }

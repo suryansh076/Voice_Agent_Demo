@@ -13,7 +13,7 @@ public class dateValidationService {
 
     public String validDate(String dateStr) {
         try {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate InputStringDate = LocalDate.parse(dateStr, dateTimeFormatter);
             LocalDate today = LocalDate.now();
 

@@ -13,21 +13,8 @@ public class saveEmployeeDetails {
     private saveUserDetails userDetails;
 
     @PostMapping
-    public String savedata(
-            @RequestParam String name,
-            @RequestParam String leaveId,
-            @RequestParam String leaveEndDate,
-            @RequestParam String reportingDate,
-            @RequestParam boolean call_Status,
-            @RequestParam String call_Response) {
+    public String savedata(@RequestBody EmployeeDetails emp) {
 
-        EmployeeDetails emp = new EmployeeDetails();
-        emp.setName(name);
-        emp.setLeaveId(leaveId);
-        emp.setLeaveEndDate(leaveEndDate);
-        emp.setReportingDate(reportingDate);
-        emp.setCall_Status(call_Status);
-        emp.setCall_Response(call_Response);
 
         userDetails.savedataservice(emp);
 

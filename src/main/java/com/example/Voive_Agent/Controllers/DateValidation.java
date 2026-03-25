@@ -13,10 +13,11 @@ public class DateValidation {
 
     @GetMapping
     public ResponseEntity<String> validateDate(
-            @RequestParam String dateString) {
+            @RequestParam String dateString,
+            @RequestParam String leaveEndDate) {
 
         // NOTE: year/day/month variables missing in image, so using direct input
         return ResponseEntity.ok()
-                .body(dateValidationService.validDate(dateString));
+                .body(dateValidationService.validDate(dateString,leaveEndDate));
     }
 }

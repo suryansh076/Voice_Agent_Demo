@@ -11,11 +11,11 @@ import java.util.Map;
 @Service
 public class dateValidationService {
 
-    public String validDate(String dateStr) {
+    public String validDate(String dateStr,String lesveEndDate)  {
         try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate InputStringDate = LocalDate.parse(dateStr, dateTimeFormatter);
-            LocalDate today = LocalDate.now();
+            LocalDate today = LocalDate.parse(lesveEndDate, dateTimeFormatter);
 
             Map<LocalDate, String> dateMap = Map.ofEntries(
                     Map.entry(LocalDate.parse("2026-01-01"), "New Year's Day"),
